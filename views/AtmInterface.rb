@@ -28,7 +28,10 @@ include Validators
     end
     puts "Enter Machine ID: "
     machine_id= Validators.get_number()
-    return if machine_id==nil
+    if machine_id==nil
+      puts  "Invalid Machine ID.."
+      return
+    end
     if machineController.get_machine(machine_id)!=nil
       return machine_id
     end
@@ -45,7 +48,10 @@ include Validators
       puts "3. Exit"
       puts "Enter Choice: "
       choice= Validators.get_number()
-      next if choice==nil
+      if choice==nil
+        puts "Invalid Choice.."
+        next
+      end
       case choice
       when 1
         create_account
@@ -64,7 +70,10 @@ include Validators
     name=gets.chomp
     puts "Enter ATM Number: "
     atm_num = Validators.get_number()
-    return if atm_num==nil
+    if atm_num==nil
+      puts "Invalid ATM Number.."
+      return
+    end
     accountController=AccountsController.new
     if accountController.atm_num_exists?(atm_num)
       puts "Atm Number Already Exists.."
@@ -72,7 +81,10 @@ include Validators
     end
     puts "Enter PIN: "
     pin = Validators.get_number()
-    return if pin==nil
+    if pin==nil
+      puts "Invalid PIN.."
+      return
+    end
     puts "Enter Expiry Date(Format: DD-MM-YYYY): "
     expiry_date=gets.chomp
     if !Validators.expiry_format_valid?(expiry_date)
@@ -90,10 +102,16 @@ include Validators
   def login(machine)
     puts "Enter ATM Number: "
     atm_num = Validators.get_number()
-    return if atm_num==nil
+    if atm_num==nil
+      puts "Invalid ATM Number.."
+      return
+    end
     puts "Enter PIN: "
     pin = Validators.get_number()
-    return if pin==nil
+    if pin==nil
+      puts "Invalid PIN.."
+      return
+    end
     accountController=AccountsController.new
     status=accountController.login(atm_num,pin)
     if status==false

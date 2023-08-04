@@ -15,7 +15,10 @@ include Validators
   def update_pin()
     puts "Enter New PIN: "
     new_pin=Validators.get_number()
-    return if new_pin==nil
+    if new_pin==nil
+      puts "Invalid PIN.."
+      return
+    end
     if @accountsController.update_pin(@atm_num,new_pin)
       puts "PIN Updated Successfully.."
     else
@@ -27,7 +30,10 @@ include Validators
   def withdraw()
     puts "Enter Amount to Withdraw: "
     amount=Validators.get_number()
-    return if amount==nil
+    if amount==nil
+      puts "Invalid Amount.."
+      return
+    end
     if !@atmController.withdraw(@atm_num,@machine_id,amount)
       puts "Error Withdrawing Amount.."
       balance=@accountsController.get_balance(@atm_num)
@@ -63,6 +69,7 @@ include Validators
       puts "Enter Choice: "
       choice= Validators.get_number()
       if choice==nil
+        puts "Invalid Choice.."
         next
       end
       case choice
