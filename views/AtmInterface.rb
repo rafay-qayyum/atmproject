@@ -1,4 +1,4 @@
-require_relative '../controllers/AccountsController.rb'
+require_relative '../controllers/AccountController.rb'
 require_relative '../controllers/MachineController.rb'
 require_relative '../controllers/AtmController.rb'
 require_relative '../validators.rb'
@@ -74,7 +74,7 @@ include Validators
       puts "Invalid ATM Number.."
       return
     end
-    accountController=AccountsController.new
+    accountController=AccountController.new
     if accountController.atm_num_exists?(atm_num)
       puts "Atm Number Already Exists.."
       return
@@ -93,7 +93,7 @@ include Validators
     end
     puts "Enter Balance: "
     balance=gets.chomp.to_i
-    accountController=AccountsController.new
+    accountController=AccountController.new
     account=UserAccount.new(name,atm_num,pin,expiry_date,balance)
     accountController.create_account(account)
     puts "Account Created Successfully.."
@@ -112,7 +112,7 @@ include Validators
       puts "Invalid PIN.."
       return
     end
-    accountController=AccountsController.new
+    accountController=AccountController.new
     status=accountController.login(atm_num,pin)
     if status==false
       puts "Invalid Credentials.."

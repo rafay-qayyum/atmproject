@@ -1,5 +1,5 @@
 require_relative '../controllers/AtmController.rb'
-require_relative '../controllers/AccountsController.rb'
+require_relative '../controllers/AccountController.rb'
 require_relative '../controllers/MachineController.rb'
 require_relative '../validators.rb'
 
@@ -8,7 +8,7 @@ class LoginInterface
     @atm_num=atm_num
     @machine_id=machine_id
     @atmController=AtmController.new
-    @accountsController=AccountsController.new
+    @accountsController=AccountController.new
     @machineController=MachineController.new
   end
 include Validators

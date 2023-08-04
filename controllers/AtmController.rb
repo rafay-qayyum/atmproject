@@ -1,8 +1,8 @@
-require_relative 'AccountsController'
+require_relative 'AccountController'
 require_relative 'MachineController'
 class AtmController
   def initialize()
-    @accountsController=AccountsController.new
+    @accountsController=AccountController.new
     @machineController=MachineController.new
   end
   def withdraw(atm_num,machine_id,amount)

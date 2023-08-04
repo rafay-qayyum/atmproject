@@ -1,6 +1,6 @@
 require 'csv'
 require_relative '../models/UserAccount.rb'
-class AccountsCsvDBHandler
+class AccountCsvHandler
   def initialize()
     @accounts_file='data/accounts.csv'
   end
